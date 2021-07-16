@@ -43,6 +43,32 @@ public class UserDoa {
 		return null;
 	}
 	
+
+	
+public User getBalance(Integer balance) {
+	
+	for(User user : users) {
+		if(user.getBalance().equals(balance)) {
+			return user;
+		}
+		
+	}
+	
+	return null;
+}
+
+public User getAccountNumber(Integer accountNumber) {
+	
+	for(User user : users) {
+		if(user.getAccountNumber().equals(accountNumber)) {
+			return user;
+		}
+		
+	}
+	
+	return null;
+}
+
 	public void updateUser(User user) {
 		// due to us holding the entire list in memory, we will actually automatically update the user
 		// in the list anytime we change the fields of the user object.

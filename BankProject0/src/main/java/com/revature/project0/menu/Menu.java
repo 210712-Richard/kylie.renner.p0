@@ -96,7 +96,8 @@ public class Menu {
 		System.out.println("\t1. See current balance");
 		System.out.println("\t2. Deposit money");
 		System.out.println("\t3. Apply for loan");
-		System.out.println("\t4. Logout");
+		System.out.println("\t4. Withdraw money");
+		System.out.println("\t5. Logout");
 		return select();
 	}
 	private void master() {
