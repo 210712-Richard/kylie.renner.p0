@@ -2,13 +2,14 @@ package com.revature.project0.menu;
 
 import java.util.Scanner;
 
-
-import com.revature.project0.userInfo.User;
+import com.revature.project0.data.UserDoa;
 import com.revature.project0.services.UserServices;
 import com.revature.project0.until.SingletonScanner;
+import com.revature.project0.userInfo.User;
 
 public class Menu {
 	private UserServices us = new UserServices();
+	private UserDoa ud = new UserDoa();
 	private User loggedUser = null;
 	private Scanner scan = SingletonScanner.getScanner().getScan();
 	
@@ -65,25 +66,31 @@ public class Menu {
 	
 	private void user() {
 		user: while(true) {
-			switch(playerMenu()) {
+			switch(userMenu()) {
 			case 1:
-				// daily bonus
-//				if(us.hasCheckedIn(loggedUser)) {
-//					System.out.println("Already checked in today, please try again tomorrow!");
-//					break;
-//				}
-//				us.doCheckIn(loggedUser);
-//				
-//				System.out.println("Your new total is "+loggedUser.getCurrency()+" du-cats!");
-//				break;
-			case 2:
 				// view balance
 				System.out.println("You currently have "+loggedUser.getBalance()+" dollars.");
 				break;
+			case 2:
+				Double deposit = scan.nextDouble();
+				//loggedUser.setBalance(loggedUser.getBalance() + deposit);
+				Double balance = loggedUser.getBalance()+ deposit;
+				loggedUser.setBalance(balance);
+				System.out.println("You currently have "+loggedUser.getBalance()+" dollars.");
+				ud.writeToFile();
+				break;
 			case 3:
-				// spend currency
+				// withdraw currency
+				Double withdraw = scan.nextDouble();
+				Double withdrawBalance = loggedUser.getBalance()- withdraw;
+				loggedUser.setBalance(withdrawBalance);
+				System.out.println("You currently have "+loggedUser.getBalance()+" dollars.");
+				ud.writeToFile();
 				break;
 			case 4:
+				
+				break;
+			case 5:
 				loggedUser = null;
 				break user;
 			default:
@@ -91,12 +98,12 @@ public class Menu {
 		}
 	}
 	
-	private int playerMenu() {
+	private int userMenu() {
 		System.out.println("What would you like to do?");
 		System.out.println("\t1. See current balance");
 		System.out.println("\t2. Deposit money");
-		System.out.println("\t3. Apply for loan");
-		System.out.println("\t4. Withdraw money");
+		System.out.println("\t3. Withdraw money");
+		System.out.println("\t4. Apply for loan");
 		System.out.println("\t5. Logout");
 		return select();
 	}

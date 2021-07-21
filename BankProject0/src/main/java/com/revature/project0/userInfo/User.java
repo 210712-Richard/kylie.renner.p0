@@ -16,7 +16,7 @@ public class User  implements Serializable {
 	private String firstName;
 	private String lastName;
 	private Integer accountNumber;
-	private Long balance;
+	private Double balance;
 	private UserType userType;
 	private LoanType loanType;
 
@@ -27,7 +27,7 @@ public User() {
 	
 	}
 
-public User(Integer id, String username, String email, Integer accountnumber, Long balance) {
+public User(Integer id, String username, String email, Integer accountnumber, Double balance) {
 	this();
 	this.id = id;
 	this.userName = username;
@@ -95,12 +95,12 @@ public void setAccountNumber(Integer accountNumber) {
 }
 
 
-public Long getBalance() {
+public Double getBalance() {
 	return balance;
 }
 
 
-public void setBalance(Long balance) {
+public void setBalance(Double balance) {
 	this.balance = balance;
 }
 

@@ -21,10 +21,10 @@ public class UserDoa {
 		// Helper for myself. If no users exist in the users.dat file (first startup) than I should create a few
 		if(users == null) {
 			users = new ArrayList<User>();
-			users.add(new User(1234,  "Williamsn", "nedw@mail.com", 2345, 100l));
-			users.add(new User(2345, "Kiml", "kiml@gmail.com", 5678, 3000l));
-			users.add(new User(3456, "Smithj", "smithj@mail.com", 6789, 2000l));
-			User u = new User(0011, "Kylie", "kylie.renner@revature.net", 1122, 1000l);
+			users.add(new User(1234,  "Williamsn", "nedw@mail.com", 2345, 100d));
+			users.add(new User(2345, "Kiml", "kiml@gmail.com", 5678, 3000d));
+			users.add(new User(3456, "Smithj", "smithj@mail.com", 6789, 2000d));
+			User u = new User(0011, "Kylie", "kylie.renner@revature.net", 1122, 1000d);
 			u.setUserType(UserType.ADMIN);
 			users.add(u);
 			ds.writeObjectsToFile(users, filename);
@@ -45,7 +45,7 @@ public class UserDoa {
 	
 
 	
-public User getBalance(Integer balance) {
+public User getBalance(Double balance) {
 	
 	for(User user : users) {
 		if(user.getBalance().equals(balance)) {

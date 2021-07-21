@@ -16,7 +16,7 @@ private UserDoa ud = new UserDoa();
 		return u;
 	}
 	
-	public User balance(Integer amount) {
+	public User balance(Double amount) {
 		User b = ud.getBalance(amount);
 		return b;
 		
